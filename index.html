@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My Website</title>
+		<style>
+			img {
+				visibility: hidden;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 100%;
+				height: 100%;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="hideMe">
+		<h1 visibility="visible">My calculator!</h1>
+		<form>
+			<label for="var1">Enter your first number:</label></br>
+			<input type="text" id="var1" name="var1"></br>
+
+			<label for="operation">Enter an operation:</label></br>
+
+			<input type="radio" name="operation" id="addition">
+			<label for="addition">Addition</label></br>
+
+			<input type="radio" name="operation" id="subtraction">
+			<label for="subtraction">Subtraction</label></br>
+
+			<input type="radio" name="operation" id="multiplication">
+			<label for="multiplication">Multiplication</label></br>
+
+			<input type="radio" name="operation" id="division">
+			<label for="division">Division</label></br>
+
+			<label for="var2">Enter your second number:</label></br>
+			<input type="text" id="var2" name="var2"></br>
+
+
+			<input type="button" onclick="myFunction()" value="Submit">
+		</form>
+		</div>
+
+		<img src="ahh.png" id="scare" width="100%">
+		<img src="ahh2.png" id="scare2" width="100%">
+		<audio src="screamm.mp3" id="scream" volume=".1" loop></audio>
+		
+
+		<script>
+			function myFunction() {
+				document.getElementById("hideMe").style.visibility = "hidden";
+				let audio = document.getElementById("scream")
+				audio.play()
+				audio.volume = .3
+				console.log("Finished the deed");
+				document.body.style.backgroundColor = "black";
+				loop1();
+			}
+
+			//Won't make you leave
+			window.addEventListener("beforeunload", function(e){
+				e.preventDefault();
+				e.returnValue = '';
+			})
+
+			function loop1() {
+				document.getElementById("scare").style.visibility = "visible";
+				document.getElementById("scare2").style.visibility = "hidden";
+				setInterval(loop2, 550);
+			}
+			function loop2() {
+				document.getElementById("scare").style.visibility = "hidden";
+				document.getElementById("scare2").style.visibility = "visible";
+				setInterval(loop1, 550);
+			}
+
+		</script>
+	</body>
+</html>
